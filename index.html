@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý mảng số</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Flowbite -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 text-gray-800 p-6">
+
+    <div class="max-w-3xl mx-auto space-y-8">
+
+        <!-- Tổng các số dương -->
+        <h1 class="text-4xl font-bold text-center text-blue-600 my-6">Quản Lý Mảng Số</h1>
+        <div class="flex gap-2 mb-4">
+                <input id="array" type="number" placeholder="Nhập chuỗi số" class="border rounded p-2 flex-1">
+                <button onclick="handleAddNumber()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Number</button>
+        </div>
+        <p class="mb-2">Các số là: <span id="total" class="font-medium"></span></p>
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Tổng các số dương trong mảng</h2>
+            <button onclick="handleTongCacSoDuong()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Tính tổng</button>
+            <p class="mt-2">Tổng các số dương là: <span id="KQ_1" class="font-medium"></span></p>
+        </div>
+
+        <!-- Đếm có bao nhiêu số -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Đếm có bao nhiêu số trong mảng</h2>
+            <button onclick="handleDemSo()" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Đếm số</button>
+            <p class="mt-2">Các số có trong mảng là: <span id="KQ_2" class="font-medium"></span></p>
+        </div>
+
+        <!-- Tìm số nhỏ nhất -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Tìm số nhỏ nhất trong mảng</h2>
+            <button onclick="handleSoNhoNhat()" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">Số nhỏ nhất</button>
+            <p class="mt-2">Số nhỏ nhất trong mảng là: <span id="KQ_3" class="font-medium"></span></p>
+        </div>
+
+        <!-- Tìm số dương nhỏ nhất -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Tìm số dương nhỏ nhất trong mảng</h2>
+            <button onclick="handleSoDuongNhoNhat()" class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600">Số dương nhỏ nhất</button>
+            <p class="mt-2">Số dương nhỏ nhất trong mảng là: <span id="KQ_4" class="font-medium"></span></p>
+        </div>
+
+        <!-- Tìm số chẵn cuối cùng -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Tìm số chẵn cuối cùng trong mảng</h2>
+            <button onclick="handleSoChanCuoi()" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Số chẵn cuối cùng</button>
+            <p class="mt-2">Số chẵn cuối cùng trong mảng là: <span id="KQ_5" class="font-medium"></span></p>
+        </div>
+
+        <!-- Đổi chỗ 2 giá trị -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Đổi chỗ 2 giá trị trong mảng</h2>
+            <div class="flex gap-2 mb-4">
+                <input type="number" placeholder="Vị trí 1" id="num_1" class="border rounded p-2 flex-1">
+                <input type="number" placeholder="Vị trí 2" id="num_2" class="border rounded p-2 flex-1">
+            </div>
+            <button onclick="handleDoiCho()" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">Đổi chỗ</button>
+            <p>Mảng sau khi đổi là: <span id="KQ_6" class="font-medium"></span></p>
+        </div>
+
+        <!-- Sắp xếp tăng -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Sắp xếp mảng theo thứ tự tăng dần</h2>
+            <button onclick="handleSapXepTang()" class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">Sắp xếp tăng</button>
+            <p class="mt-2">Mảng theo thứ tự tăng dần là: <span id="KQ_7" class="font-medium"></span></p>
+        </div>
+
+        <!-- Số nguyên tố đầu tiên -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Tìm số nguyên tố đầu tiên trong mảng</h2>
+            <button onclick="handlePrimeNumber()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Số nguyên tố</button>
+            <p class="mt-2">Số nguyên tố đầu tiên trong mảng là: <span id="KQ_8" class="font-medium"></span></p>
+        </div>
+
+        <!-- Số nguyên trong mảng mới -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Tìm có bao nhiêu số nguyên trong mảng mới</h2>
+            <div class="flex gap-2 mb-4">
+                <input type="number" placeholder="Nhập giá trị vào mảng" id="array_2" class="border rounded p-2 flex-1">
+                <button onclick="handleAddNumber_2()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Number 2</button>
+            </div>
+            <p class="mb-2">Các số là: <span id="total_2" class="font-medium"></span></p>
+            <button onclick="handleDemSoNguyen()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Số nguyên</button>
+            <p class="mt-2">Số nguyên có trong mảng là: <span id="KQ_9" class="font-medium"></span></p>
+        </div>
+
+        <!-- So sánh số dương và số âm -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">So sánh số dương và số âm trong mảng</h2>
+            <button onclick="comparePositiveNegative()" class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600">So sánh</button>
+            <p class="mt-2">Kết quả là: <span id="KQ_10" class="font-medium"></span></p>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+    <script src="./src/main.js"></script>
+</body>
+</html>
